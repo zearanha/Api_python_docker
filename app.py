@@ -9,10 +9,8 @@ app = Flask(__name__)
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET_KEY', 'default-super-secreta')
 jwt = JWTManager(app)
 
-# Inicializa o Bcrypt para hashing de senhas
 bcrypt = Bcrypt(app)
 
-# Configurações do banco de dados (mesmas do docker-compose.yml)
 DB_HOST = os.environ.get('DB_HOST', 'db')
 DB_NAME = os.environ.get('DB_NAME', 'my_database')
 DB_USER = os.environ.get('DB_USER', 'user')
@@ -33,7 +31,6 @@ def get_db_connection():
         return None
 
 
-# Rota de health check para verificar a conexão com o banco de dados
 @app.route('/health', methods=['GET'])
 def health_check():
     """
@@ -52,7 +49,6 @@ def health_check():
         if conn:
             conn.close()
 
-# --- Rota de Autenticação (Login) ---
 @app.route('/login', methods=['POST'])
 def login():
     """Autentica o usuário e retorna um token JWT."""
@@ -82,9 +78,7 @@ def login():
     except Exception as e:
         return jsonify({"msg": str(e)}), 500
 
-# --- Rotas CRUD Protegidas ---
 
-# GET All Users (Protegida)
 @app.route('/users', methods=['GET'])
 @jwt_required()
 def get_all_users():
@@ -104,7 +98,6 @@ def get_all_users():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# GET User by ID (Protegida)
 @app.route('/users/<int:user_id>', methods=['GET'])
 @jwt_required()
 def get_user_by_id(user_id):
@@ -125,7 +118,6 @@ def get_user_by_id(user_id):
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# POST (Criar Usuário)
 @app.route('/users', methods=['POST'])
 def create_user():
     """Cria um novo usuário com hash de senha."""
@@ -150,7 +142,6 @@ def create_user():
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# PUT (Atualizar Usuário)
 @app.route('/users/<int:user_id>', methods=['PUT'])
 @jwt_required()
 def update_user(user_id):
@@ -184,7 +175,6 @@ def update_user(user_id):
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# DELETE a User (Protegida)
 @app.route('/users/<int:user_id>', methods=['DELETE'])
 @jwt_required()
 def delete_user(user_id):

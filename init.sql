@@ -1,6 +1,4 @@
--- init.sql
 
--- Cria a tabela de usuários com um campo 'password'
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
