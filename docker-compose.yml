@@ -3,7 +3,6 @@ version: '3.8'
 services:
   db:
     image: postgres:15-alpine
-    restart: always
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
@@ -16,7 +15,6 @@ services:
 
   web:
     build: .
-    restart: always
     ports:
       - "5000:5000"
     volumes:
