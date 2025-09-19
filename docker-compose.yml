@@ -11,7 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Adiciona o script de inicialização
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   web:
     build: .
@@ -26,7 +26,8 @@ services:
       DB_NAME: my_database
       DB_USER: user
       DB_PASS: password
-      JWT_SECRET_KEY: sua-chave-super-secreta # Adiciona a chave secreta JWT
+      JWT_SECRET_KEY: sua-chave-super-secreta
+      FLASK_DEBUG: 1  
 
 volumes:
   postgres_data:
