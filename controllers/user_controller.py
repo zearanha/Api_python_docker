@@ -3,7 +3,6 @@ from flask_jwt_extended import create_access_token, jwt_required
 from models.user import User, bcrypt
 from services.database import get_db_connection
 
-# Cria um Blueprint para as rotas de usuário
 user_bp = Blueprint('user_bp', __name__)
 
 @user_bp.route('/health', methods=['GET'])

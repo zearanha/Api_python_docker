@@ -2,16 +2,13 @@ import os
 from flask import Flask
 from flask_jwt_extended import JWTManager
 
-# Importa o controlador (rotas)
 from controllers.user_controller import user_bp
 
 app = Flask(__name__)
 
-# Configurações do JWT
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET_KEY', 'default-super-secreta')
 jwt = JWTManager(app)
 
-# Registra o Blueprint do controlador
 app.register_blueprint(user_bp)
 
 if __name__ == '__main__':
