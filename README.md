@@ -6,14 +6,14 @@ API REST em Python utilizando Flask, com banco de dados PostgreSQL, tudo rodando
 
 ## 🧱 Estrutura do Projeto
 
-<b>├── controllers/ # Controladores / rotas da API</b>
-├── models/ # Modelos (ORM / classes de dados)
-├── services/ # Lógica de “serviços” / regras de negócio
-├── Dockerfile # Imagem da aplicação Flask
-├── docker-compose.yml # Definições dos serviços (app + postgres)
-├── init.sql # Script inicial para o banco (criação de schema, dados iniciais)
-├── requirements.txt # Dependências Python
-└── app.py # Arquivo principal para rodar a aplicação
+<p><b>├── controllers/ # Controladores / rotas da API<br>
+├── models/ # Modelos (ORM / classes de dados)<br>
+├── services/ # Lógica de “serviços” / regras de negócio<br>
+├── Dockerfile # Imagem da aplicação Flask<br>
+├── docker-compose.yml # Definições dos serviços (app + postgres)<br>
+├── init.sql # Script inicial para o banco (criação de schema, dados iniciais)<br>
+├── requirements.txt # Dependências Python<br>
+└── app.py # Arquivo principal para rodar a aplicação</b></p>
 
 
 
